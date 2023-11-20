@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.board {
+  justify-content: center;
+  display: flex;
+  flex-wrap: nowrap; /* Prevents wrapping to a new line */
+  gap: 1rem; /* Adds space between columns */
+  padding: 10rem; /* Padding around the entire board */
+  overflow-x: auto; /* Enables horizontal scrolling if columns overflow */
+}
+.column {
+  border: 1px solid rgba(229, 231, 235, 1); /* Light gray border */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Tailwind's medium shadow */
+  border-radius: 0.5rem; /* Rounded corners */
+  background-color: white; /* White background */
+  padding: 1rem; /* Padding around the content */
+  width: 16rem; /* Fixed width, you can adjust as needed */
+  margin-bottom: 1rem; /* Space below each column */
+  transition: box-shadow 0.3s ease-in-out; /* Smooth transition for shadow */
+}
+
+.column:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Larger shadow on hover */
+}
+
+/* Custom Card Container Styles */
+.custom-card {
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 0.5rem; /* Rounded corners */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Shadow */
+  overflow: hidden;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.custom-card-content {
+  padding: 1rem;
+}
+
+.custom-card-footer {
+  padding: 0.5rem 1rem;
+  background-color: rgba(229, 231, 235, 1); /* Light gray background */
+  font-size: 0.875rem;
+}
