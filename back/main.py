@@ -3,8 +3,11 @@ import uuid
 from fastapi import FastAPI
 from models import TaskCreate, TaskUpdate
 import boto3
+from starlette_graphene3 import GraphQLApp
 from fastapi import Depends
-
+from fastapi import FastAPI, Request
+from starlette_graphene3 import GraphQLApp, make_graphiql_handler
+from schemas import schema
 from schemas import schema
 
 dynamodb = boto3.resource(
@@ -21,6 +24,15 @@ def get_dynamodb_table():
 
 
 app = FastAPI()
+
+
+@app.route("/graphql", methods=["GET", "POST"])
+async def graphql(request: Request):
+    if request.method == "GET":
+        return make_graphiql_handler()(request)
+    elif request.method == "POST":
+        app = GraphQLApp(schema=schema)
+        return await app.handle_graphql(request=request)
 
 
 @app.post("/tasks/")
@@ -70,7 +82,7 @@ async def update_task(task_id: str, task: TaskUpdate, table=Depends(get_dynamodb
         Key={'task_id': task_id},
         UpdateExpression=update_expression,
         ExpressionAttributeValues=expression_attribute_values,
-        ExpressionAttributeNames=expression_attribute_names,  # Add this line
+        ExpressionAttributeNames=expression_attribute_names,
         ReturnValues="UPDATED_NEW"
     )
     return response
