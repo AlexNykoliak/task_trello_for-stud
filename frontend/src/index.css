@@ -41,6 +41,7 @@ code {
 
 /* Custom Card Container Styles */
 .custom-card {
+  background-color: #F7F8F9;
   border-width: 2px;
   border-style: solid;
   border-radius: 0.5rem; /* Rounded corners */
@@ -61,6 +62,6 @@ code {
 
 .custom-card-footer {
   padding: 0.5rem 1rem;
-  background-color: rgba(229, 231, 235, 1); /* Light gray background */
+  background-color: #F7F8F9;
   font-size: 0.875rem;
 }
